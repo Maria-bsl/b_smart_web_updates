@@ -1,0 +1,156 @@
+<nav aria-label="Page breadcrumb">
+    <ol class="breadcrumb mb-1 bg-white py-1 border">
+        <li class="breadcrumb-item active" aria-current="page"><a href="HvL7a8">Home</a></li>
+        <li class="breadcrumb-item">Attendance</li>
+    </ol>
+</nav>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"><label class="hd1 mb-0">Attendance</label></h5>
+
+        <div class="row">
+            <div class="form-group col-sm-11 col-md-9 col-lg-6 row mx-0 format-145">
+                <asp:Label CssClass="col-sm-3 col-form-label pl-0"></asp:Label>
+
+
+
+                <div class="input-group col-md-9 px-0">
+                    <asp:TextBox CssClass="col-md-9 form-control" ID="txtFDate" runat="server">
+                    </asp:TextBox>
+                    <div class="input-group-append rounded-right">
+                        <asp:ImageButton CssClass="input-group-text" runat="server" CausesValidation="false" ID="iPopup"
+                            ImageUrl="/images/calendar.png" height="38px" />
+                    </div>
+                </div>
+
+
+                <!-- RadioButton List -->
+                RepeatLayout="Flow"
+
+                asp-radioButtonList
+
+
+                <div class="table-responsive mb-1">
+                    <asp:GridView ID="gvDept" CssClass="table table-bordered mb-1 display" ItemStyle-Width="1%">
+                    </asp:GridView>
+                </div>
+
+
+
+                <small class="form-text text-muted offset-md-3"></small>
+
+
+                <%-- <div class="table-responsive mb-1">
+                        <asp:gridview ID="Gridview1" runat="server" ShowFooter="true" Width="100%"
+                            AlternatingRowStyle-CssClass="AlternateItemStyle" AutoGenerateColumns="false"
+                            CssClass="table table-bordered mb-1 display" OnRowCreated="Gridview1_RowCreated"
+                            HeaderStyle-CssClass="HeaderDatagrid">
+                            <RowStyle HorizontalAlign="Left" CssClass="FirstItemStyle" />
+                            <PagerStyle CssClass="gridViewPager" />
+                            <Columns>
+                                <asp:BoundField DataField="RowNumber" HeaderText="SNo" />
+                                <asp:TemplateField HeaderText="Fee Type">
+                                    <ItemTemplate>
+                                        <asp:DropDownList runat="server" ID="ddlTypes" Width="190"
+                                            AppendDataBoundItems="true">
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator runat="server" ID="rfvFee" CssClass="red_new"
+                                            Display="Dynamic" ControlToValidate="ddlTypes"
+                                            ErrorMessage="Please select types"></asp:RequiredFieldValidator>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Term">
+                                    <ItemTemplate>
+                                        <asp:DropDownList runat="server" ID="ddlTerm" Width="190"
+                                            AppendDataBoundItems="true">
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator runat="server" ID="rfvTerm" CssClass="red_new"
+                                            Display="Dynamic" ControlToValidate="ddlTerm"
+                                            ErrorMessage="Please select term"></asp:RequiredFieldValidator>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Amount">
+                                    <ItemTemplate>
+                                        <asp:TextBox ID="txtAmount" runat="server" Width="100" MaxLength="20">
+                                        </asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ID="rfvME"
+                                            ControlToValidate="txtAmount" Display="Dynamic" CssClass="red_new"
+                                            ErrorMessage="Please enter amount"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator runat="server" ID="revME"
+                                            ValidationExpression="^[0-9,]{1,21}$" CssClass="red_new"
+                                            ControlToValidate="txtAmount" Display="Dynamic"
+                                            ErrorMessage="Please enter valid count">
+                                        </asp:RegularExpressionValidator>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false"
+                                            onclick="LinkButton1_Click">Delete</asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:gridview>
+                    </div> --%>
+
+
+
+                <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+                    <script>
+                        $(document).ready(function () {
+                            $('table[id*=gvDept]>tbody>tr').click(function () {
+                                if ($(this).find(' input[type=radio]')[0]) {
+                                    $(this).find(' input[type=radio]')[0].click();
+                                }
+                            });
+
+                            $('table[id*=gvDept]').prepend($("<thead></thead>").append($(this).find(
+                                    "tr:first")))
+                                .DataTable({
+                                    "responsive": true,
+                                    "stateSave": true,
+                                    "lengthMenu": [
+                                        [10, 20, 30, 50, -1],
+                                        [10, 20, 30, 50, "All"]
+                                    ],
+                                    "sPaginationType": "full_numbers"
+                                });
+                        });
+                    </script>
+                </asp:Content>
+
+
+
+                <!-- with style -->
+                <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+                <style>
+                    table tbody tr {
+                        cursor: pointer;
+                    }
+                </style>
+                <script>
+                    $(document).ready(function () {
+                        $('table[id*=gvDept]>tbody>tr').click(function () {
+                            if ($(this).find(' input[type=radio]')[0]) {
+                                $(this).find(' input[type=radio]')[0].click();
+                            }
+                        });
+
+                        $('table[id*=gvDept]').prepend($("<thead></thead>").append($(this).find("tr:first")))
+                            .DataTable({
+                                "responsive": true,
+                                "stateSave": true,
+                                "lengthMenu": [
+                                    [10, 20, 30, 50, -1],
+                                    [10, 20, 30, 50, "All"]
+                                ],
+                                "sPaginationType": "full_numbers"
+                            });
+                    });
+                </script>
+                </asp:Content>
+
+
+
+                ItemStyle-Width="1%"

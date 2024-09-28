@@ -1,0 +1,90 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login_New.Master.cs" Inherits="PresentationLayer.Login_New" %>
+<%@ Import Namespace="System.IO" %>
+
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <base href="/" />
+    <title>B-Smart Academia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link href="/Styles/styles_j.css" rel="stylesheet" type="text/css" /> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Styles/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/fontawesome-free-5.13.0-web/css/all.css">
+    <link rel="stylesheet" href="~/Styles/hamburgers.min.css">
+    <!-- DataTable -->
+    <link rel="stylesheet" href="./assets/dataTable/css/dataTables.bootstrap4.min.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="assets/semantic.ui/semantic-ui-dropdown.min.css">
+    <link rel="stylesheet" href="assets/semantic.ui/semantic-ui-transition.min.css">
+    <link rel="stylesheet" href="./assets/datepicker/gijgo.min.css">
+    <link rel="stylesheet" href="~/Styles/style.css">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <%
+        string path = Server.MapPath("~/assets/b_smart_v1/");
+        string[] cssFiles = Directory.GetFiles(path, "styles.*.css").ToArray();
+        List<string> relativeCssSources = new List<string>();
+        foreach (string cssFile in cssFiles) {
+            string cssFileName = Path.GetFileName(cssFile);
+            string relativeCssSrc = ResolveUrl("~/assets/b_smart_v1/" + cssFileName);
+            relativeCssSources.Add(relativeCssSrc);
+        }  
+    %>
+    <% foreach (string relativeCssSrc in relativeCssSources) { %>
+            <script>
+                var dynamicSrc = '.' + '<%= ResolveUrl(relativeCssSrc) %>';
+                function addStylesheet() {
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = dynamicSrc; 
+                    document.head.appendChild(link); 
+                }
+                addStylesheet();
+            </script>
+    <% } %>
+
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePartialRendering="true"
+            EnableViewState="true" EnablePageMethods="true">
+
+        </ajaxToolkit:ToolkitScriptManager>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+
+    </form>
+
+    <%
+        string path = Server.MapPath("~/assets/b_smart_v1/");
+        string[] jsFiles = Directory.GetFiles(path, "polyfills.*.js").Concat(Directory.GetFiles(path, "runtime.*.js")).Concat(Directory.GetFiles(path, "main.*.js")).Concat(Directory.GetFiles(path, "*.*.js")).ToArray();
+        List<string> relativeJsSources = new List<string>();
+        foreach (string jsFile in jsFiles) {
+            string jsFileName = Path.GetFileName(jsFile);
+            string relativeJsSrc = ResolveUrl("~/assets/b_smart_v1/" + jsFileName);
+            relativeJsSources.Add(relativeJsSrc);
+        }  
+    %>
+    <% foreach (string relativeJsSrc in relativeJsSources) { %>
+                <script  defer src="<%= '.' + relativeJsSrc %>"></script>
+    <% } %>
+
+</body>
+
+</html>
