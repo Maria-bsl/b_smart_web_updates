@@ -88,6 +88,14 @@
                             </div>
                         </div>
                     </div>
+
+                    <app-forgot-password-form
+                    username-client-id='<%= txtEmail.ClientID %>'
+                    secret-question-select-client-id='<%= ddlSecret.ClientID %>'
+                    answer-client-id='<%= txtAns.ClientID %>'
+                    ></app-forgot-password-form>
+
+
                 </div>
 
             </ContentTemplate>

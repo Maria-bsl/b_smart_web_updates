@@ -2,7 +2,12 @@
   "defaults": {
     "submit": "Submit",
     "cancel": "Cancel",
-    "reset": "Reset"
+    "reset": "Reset",
+    "pleaseFill": "Please fill",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "InActive",
+    "search": "Search"
   },
   "loginForm": {
     "labels": {
@@ -125,6 +130,33 @@
         "blockedUsers": "Select a user"
       }
     }
+  },
+  "registerSchool": {
+    "title": "Register New School"
+  },
+  "schoolGroups": {
+    "title": "School Groups",
+    "welcomeMessage": "Welcome back to the school groups page.",
+    "actions": {
+      "addSchoolGroup": "Add School Group"
+    },
+    "forms": {
+      "labels": {
+        "schoolGroup": "School Group"
+      },
+      "placeholders": {
+        "schoolGroup": "Enter school group"
+      },
+      "errors": {}
+    },
+    "schoolGroupsTable": [
+      {
+        "label": "Group"
+      },
+      {
+        "label": "Status"
+      }
+    ]
   },
   "sidenavItems": [
     {

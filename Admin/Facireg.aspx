@@ -1,5 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Facireg.aspx.cs" MasterPageFile="~/Head_Admin.Master" Inherits="PresentationLayer.Admin.Facireg" %>
 <%@ MasterType VirtualPath="~/Head_Admin.master" %>
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="Newtonsoft.Json" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         $(document).ready(function () {
@@ -35,7 +39,7 @@
                     </ol>
                 </nav>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body d-none">
                         <h5 class="card-title">Registration</h5>
 
                         <div class="row">
@@ -240,6 +244,58 @@
                             <asp:Button CssClass="btn btn-sm btn-biz_logic ml-1" runat="server" ID="btnCancel" CausesValidation="false" OnClick="btnCancel_Click"
                                 Text="Cancel" />
                         </div>
+                    </div>
+                    <div class="card-body">
+                        <%
+                            var rowCount = Gridview1.Rows.Count;
+                            var items = new List<Dictionary<int, string>>();
+                            for (int i = 0; i < rowCount; i++) {
+                                var map = new Dictionary<int, string>();
+                                for (int j = 0; j < Gridview1.HeaderRow.Cells.Count; j++) {
+                                    var item = Gridview1.Rows[i].Cells[j];
+                                    if (j == 1) {
+                                        var txtValidity = (TextBox)item.FindControl("txtValidity");
+                                        map[j] = txtValidity.ClientID;
+                                    }
+                                    else if (j == 2) {
+                                       var ddlCur = (DropDownList)item.FindControl("ddlCur");
+                                       map[j] = ddlCur.ClientID; 
+                                    }
+                                    else if (j == 3) {
+                                        var linkButton = (LinkButton)item.FindControl("LinkButton1");
+                                        map[j] = linkButton.ClientID;
+                                    }
+                                    else {
+                                        map[j] = item.ClientID;
+                                    }
+                                }
+                                items.Add(map);
+                            }
+                        %>
+
+
+
+                        <app-register-school-form
+                        school-name-client-id=<%= txtFaci.ClientID %>
+                        school-acronym-client-id=<%= txtShort.ClientID %>
+                        school-reg-no-client-id=<%= txtRegNo.ClientID %>
+                        institution-client-id=<%= txtIns.ClientID %>
+                        authorized-user-client-id=<%= txtName.ClientID %>
+                        branch-name-select-client-id=<%= ddlBranch.ClientID %>
+                        email-address-client-id='<%= txtEmail.ClientID %>'
+                        country-select-client-id='<%= ddlCountry.ClientID %>'
+                        region-select-client-id='<%= ddlRegion.ClientID %>'
+                        district-select-client-id=<%= ddlDistrict.ClientID %>
+                        ward-select-client-id='<%= ddlWard.ClientID %>'
+                        address-client-id='<%= txtAdd.ClientID %>'
+                        website-client-id='<%= txtWeb.ClientID %>'
+                        phone-number-client-id='<%= txtPhone.ClientID %>'
+                        mobile-number-client-id='<%= txtWork.ClientID %>'
+                        account-details-array='<%= JsonConvert.SerializeObject(items) %>'
+                        add-new-row-button-client-id='<%= ButtonAdd.ClientID %>'
+                        register-button-client-id='<%= btnReg.ClientID %>'
+                        cancel-button-client-id='<%= btnCancel.ClientID %>'>
+                        </app-register-school-form>
                     </div>
                 </div>
             </ContentTemplate>

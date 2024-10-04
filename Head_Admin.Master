@@ -173,7 +173,8 @@
 
             <div class="row">
                 <%-- Please remove inline-styling class --%>
-                <div style="background-color: #2b58a4" class="sidebar-hide sidebar shadow">
+                <%-- style="background-color: #2b58a4" --%>
+                <div class="sidebar-hide sidebar shadow">
                     <ul class="app-menu nav flex-column px-1 pt-2">
                         <asp:Literal runat="server" ID="litDesign"></asp:Literal>
                     </ul>
@@ -322,6 +323,8 @@
     <% foreach (string relativeJsSrc in relativeJsSources) { %>
                 <script  defer src="<%= relativeJsSrc %>"></script>
     <% } %>
+
+    <script src="/assets/b_smart_v1/8.a406617874f167d5.js"></script>
 
 
 

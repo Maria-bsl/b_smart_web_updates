@@ -10,27 +10,26 @@
     }
 
     .main-area .auth-box {
-    <%-- background: url(../images/CRDB.png); --%>
-    <%-- background: url(../images/nmb-dark.png); --%>
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-blend-mode: screen;
-    background-size: contain;
-    background-position: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 48rem;
-    height: 100%;
-    max-height: 48rem;
-}
+      background: url(Images/nmb-dark.png);
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-blend-mode: screen;
+      background-size: contain;
+      background-position: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 48rem;
+      height: 100%;
+      max-height: 48rem;
+  }
 
     .card-auth {
       background: rgba(255, 255, 255, .95);
@@ -67,7 +66,7 @@
                       </div>
                       <h5 class="card-title text-center text-normal mb-2"> B-Smart Academia</h5>
                       <hr class="mt-0">
-                      <div class="row d-none">
+                      <div class="row d-none"> 
                         <div class="form-group col-12 mb-1">
                           <asp:Label CssClass="font-w500" ID="lblUName" runat="server">Username
                           </asp:Label>
@@ -95,7 +94,13 @@
                         </div>
                       </div>
                       <div class="py-2">
-                          <app-login-page password-input-client-id='<%= txtPwd.ClientID %>' username-input-client-id='<%= txtEmail.ClientID %>' login-button-client-id='<%= btnLogin.ClientID %>'></app-login-page>
+                          <app-login-page 
+                          admission-link-client-id='<%= HyperLink1.ClientID %>' 
+                          forgot-password-client-id='<%= ForgotPassword.ClientID %>' 
+                          password-input-client-id='<%= txtPwd.ClientID %>' 
+                          username-input-client-id='<%= txtEmail.ClientID %>' 
+                          login-button-client-id='<%= btnLogin.ClientID %>'>
+                          </app-login-page>
                       </div>
                       <hr>
 
@@ -118,18 +123,5 @@
           </div>
 
         </div>
-
-        
-    <%-- <div class="bg-container">
-         <app-login-page password-input-client-id='<%= txtPwd.ClientID %>' username-input-client-id='<%= txtEmail.ClientID %>' login-button-client-id='<%= btnLogin.ClientID %>'></app-login-page>
-    </div> --%>
-
   </div>
-
-  <%-- <app-login-page password-input-client-id='<%= txtPwd.ClientID %>' username-input-client-id='<%= txtEmail.ClientID %>' login-button-client-id='<%= btnLogin.ClientID %>'></app-login-page> --%>
-  
-
-
-
-
 </asp:Content>

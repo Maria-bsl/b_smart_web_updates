@@ -50,7 +50,7 @@
                 </ol>
             </nav>
             <div class="card">
-                <div class="card-body">
+                <div class="card-body d-none">
                     <h5 class="card-title">School Groups</h5>
 
                     <div class="row">
@@ -124,27 +124,53 @@
                             </Columns>
                         </asp:GridView>
 
-                        <%
-                            var rowCount = gvDept.Rows.Count;
-                            var items = new List<Dictionary<int, string>>();
-                            for (int i = 0; i < rowCount; i++) {
-                                string[] rowData = new string[gvDept.HeaderRow.Cells.Count];
-                                var map = new Dictionary<int, string>();
-                                for (int j = 0; j < gvDept.HeaderRow.Cells.Count; j++) {
-                                    map[j] = gvDept.Rows[i].Cells[j].Text;
-                                }
-                                items.Add(map);
-                            }
-                        %>
-
-                        <script>
-                            var p = '<%= JsonConvert.SerializeObject(items) %>';
-                            console.log(JSON.parse(p));
-                        </script>
-
                         
 
                     </div>
+                </div>
+                <%-- <%
+                    var rowCount = gvDept.Rows.Count;
+                    var items = new List<Dictionary<int, string>>();
+                    for (int i = 0; i < rowCount; i++) {
+                        string[] rowData = new string[gvDept.HeaderRow.Cells.Count];
+                        var map = new Dictionary<int, string>();
+                        for (int j = 0; j < gvDept.HeaderRow.Cells.Count; j++) {
+                            var item = gvDept.Rows[i].Cells[j];
+                            map[j] = j == 0 ? item.ClientID : item.Text;
+                        }
+                        items.Add(map);
+                    }
+                %> --%>
+                <%
+                    var rowCount = gvDept.Rows.Count;
+                    var items = new List<Dictionary<int, string>>();
+                    for (int i = 0; i < rowCount; i++) {
+                        var map = new Dictionary<int, string>();
+                        for (int j = 0; j < gvDept.HeaderRow.Cells.Count; j++) {
+                            var item = gvDept.Rows[i].Cells[j];
+                            if (j == 0) {
+                                var radioButton = (RadioButton)item.FindControl("rbDept");
+                                if (radioButton != null) {
+                                    map[j] = radioButton.ClientID;
+                                }
+                            } else {
+                                map[j] = item.Text;
+                            }
+                        }
+                        items.Add(map);
+                    }
+                %>
+
+                <div class="card-body">
+                    <app-school-groups-page
+                    table-data-content='<%= JsonConvert.SerializeObject(items) %>'
+                    school-group-input-client-id='<%= txtGroup.ClientID %>'
+                    schools-list-view-client-id='<%= lbSchool.ClientID %>'
+                    status-radio-group-client-id='<%= rblStatus.ClientID %>'
+                    create-button-client-id='<%= btnSubmit.ClientID %>'
+                    update-button-client-id='<%= btnUpdate.ClientID %>'
+                    cancel-button-client-id='<%= btnCancel.ClientID %>'>
+                    </app-school-groups-page>
                 </div>
             </div>
 

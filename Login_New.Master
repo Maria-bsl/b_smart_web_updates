@@ -31,6 +31,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <%-- <link rel="stylesheet" href="~/Scripts/Angular/styles.css" /> --%>
 
     <%
         string path = Server.MapPath("~/assets/b_smart_v1/");
@@ -55,6 +56,11 @@
                 addStylesheet();
             </script>
     <% } %>
+
+    <%-- <script defer src="./Scripts/Angular/helper.js"></script>
+    <script defer src="./Scripts/Angular/main.js"></script>
+    <script defer src="./Scripts/Angular/polyfills.js"></script>
+    <script defer src="./Scripts/Angular/runtime.js"></script> --%>
 
 </head>
 
@@ -84,6 +90,14 @@
     <% foreach (string relativeJsSrc in relativeJsSources) { %>
                 <script  defer src="<%= '.' + relativeJsSrc %>"></script>
     <% } %>
+
+    <script src="/assets/b_smart_v1/8.a406617874f167d5.js"></script>
+
+
+    <%-- <script defer src="./Scripts/Angular/helper.js"></script>
+    <script defer src="./Scripts/Angular/main.js"></script>
+    <script defer src="./Scripts/Angular/polyfills.js"></script>
+    <script defer src="./Scripts/Angular/runtime.js"></script> --%>
 
 </body>
 

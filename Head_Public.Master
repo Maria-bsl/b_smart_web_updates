@@ -1,4 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Head_Public.Master.cs" Inherits="PresentationLayer.Head_Public" %>
+<%@ Import Namespace="System.IO" %>
+
 
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -38,6 +40,30 @@
             max-width: 100%;
         }
     </style>
+
+    <%
+        string path = Server.MapPath("/assets/b_smart_v1/");
+        string[] cssFiles = Directory.GetFiles(path, "styles.*.css").ToArray();
+        List<string> relativeCssSources = new List<string>();
+        foreach (string cssFile in cssFiles) {
+            string cssFileName = Path.GetFileName(cssFile);
+            string relativeCssSrc = "/assets/b_smart_v1/" + cssFileName;
+            relativeCssSources.Add(relativeCssSrc);
+        }  
+    %>
+    <% foreach (string relativeCssSrc in relativeCssSources) { %>
+            <script>
+                var dynamicSrc = '<%= ResolveUrl(relativeCssSrc) %>';
+                function addStylesheet() {
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = dynamicSrc; 
+                    document.head.appendChild(link); 
+                }
+                addStylesheet();
+            </script>
+    <% } %>
 
 
     <!-- <link href="/Styles/Site_New.css" rel="stylesheet" type="text/css" /> -->
@@ -145,6 +171,25 @@
     <script src="../js/chart.min.js"></script>
 
     <script src="../js/script.js"></script>
+
+
+
+    <%
+        string path = Server.MapPath("/assets/b_smart_v1/");
+        string[] jsFiles = Directory.GetFiles(path, "polyfills.*.js").Concat(Directory.GetFiles(path, "runtime.*.js")).Concat(Directory.GetFiles(path, "main.*.js")).Concat(Directory.GetFiles(path, "*.*.js")).ToArray();
+        List<string> relativeJsSources = new List<string>();
+        foreach (string jsFile in jsFiles) {
+            string jsFileName = Path.GetFileName(jsFile);
+            string relativeJsSrc = "/assets/b_smart_v1/" + jsFileName;
+            relativeJsSources.Add(relativeJsSrc);
+        }  
+    %>
+    <% foreach (string relativeJsSrc in relativeJsSources) { %>
+                <script  defer src="<%= relativeJsSrc %>"></script>
+    <% } %>
+
+    <script src="/assets/b_smart_v1/8.a406617874f167d5.js"></script>
+
 
 </body>
 
