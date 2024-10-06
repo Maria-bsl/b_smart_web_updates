@@ -36,7 +36,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
     <%-- <link rel="stylesheet" href="~/Scripts/Angular/styles.css" /> --%>
 
-    <%
+    <%-- <%
         string path = Server.MapPath("~/assets/b_smart_v1/");
         string[] cssFiles = Directory.GetFiles(path, "styles.*.css").ToArray();
         List<string> relativeCssSources = new List<string>();
@@ -58,13 +58,13 @@
                 }
                 addStylesheet();
             </script>
-    <% } %>
+    <% } %> --%>
 
-    <%-- <script defer src="./Scripts/Angular/helper.js"></script>
-    <script defer src="./Scripts/Angular/main.js"></script>
-    <script defer src="./Scripts/Angular/polyfills.js"></script>
-    <script defer src="./Scripts/Angular/runtime.js"></script> --%>
-
+    <link rel="stylesheet" href="~/Scripts/Angular/styles.css" />
+    <script defer src="/Scripts/Angular/helper.js"></script>
+    <script defer src="/Scripts/Angular/main.js"></script>
+    <script defer src="/Scripts/Angular/polyfills.js"></script>
+    <script defer src="/Scripts/Angular/runtime.js"></script>
 </head>
 
 <body>
@@ -80,7 +80,7 @@
 
     </form>
 
-    <%
+    <%-- <%
         string path = Server.MapPath("~/assets/b_smart_v1/");
         string[] jsFiles = Directory.GetFiles(path, "polyfills.*.js").Concat(Directory.GetFiles(path, "runtime.*.js")).Concat(Directory.GetFiles(path, "main.*.js")).Concat(Directory.GetFiles(path, "*.*.js")).ToArray();
         List<string> relativeJsSources = new List<string>();
@@ -94,14 +94,13 @@
                 <script  defer src="<%= '.' + relativeJsSrc %>"></script>
     <% } %>
 
-    <script src="/assets/b_smart_v1/8.a406617874f167d5.js"></script>
+    <script src="/assets/b_smart_v1/8.a406617874f167d5.js"></script> --%>
 
 
-    <%-- <script defer src="./Scripts/Angular/helper.js"></script>
-    <script defer src="./Scripts/Angular/main.js"></script>
-    <script defer src="./Scripts/Angular/polyfills.js"></script>
-    <script defer src="./Scripts/Angular/runtime.js"></script> --%>
-
+    <script defer src="/Scripts/Angular/helper.js"></script>
+    <script defer src="/Scripts/Angular/main.js"></script>
+    <script defer src="/Scripts/Angular/polyfills.js"></script>
+    <script defer src="/Scripts/Angular/runtime.js"></script>
 </body>
 
 </html>
