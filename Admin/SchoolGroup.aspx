@@ -162,15 +162,15 @@
                 %>
 
                 <div class="card-body">
-                    <app-school-groups-page
-                    table-data-content='<%= JsonConvert.SerializeObject(items) %>'
-                    school-group-input-client-id='<%= txtGroup.ClientID %>'
-                    schools-list-view-client-id='<%= lbSchool.ClientID %>'
-                    status-radio-group-client-id='<%= rblStatus.ClientID %>'
-                    create-button-client-id='<%= btnSubmit.ClientID %>'
-                    update-button-client-id='<%= btnUpdate.ClientID %>'
-                    cancel-button-client-id='<%= btnCancel.ClientID %>'>
-                    </app-school-groups-page>
+                    <school-groups-page
+                        table-data-content='<%= JsonConvert.SerializeObject(items) %>'
+                        school-group-input-client-id='<%= txtGroup.ClientID %>'
+                        schools-list-view-client-id='<%= lbSchool.ClientID %>'
+                        status-radio-group-client-id='<%= rblStatus.ClientID %>'
+                        create-button-client-id='<%= btnSubmit.ClientID %>'
+                        update-button-client-id='<%= btnUpdate.ClientID %>'
+                        cancel-button-client-id='<%= btnCancel.ClientID %>'>
+                    </school-groups-page>
                 </div>
             </div>
 

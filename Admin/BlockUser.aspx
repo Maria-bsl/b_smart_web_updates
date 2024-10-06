@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                         </div>
-                        <app-block-unblock-user 
+                        <block-unblock-user 
                             title='block' 
                             user-types-select='<%= ddlUser.ClientID %>'
                             block-unblock-user-actions='<%= ddlUBlock.ClientID %>'
@@ -154,7 +154,7 @@
                             reason-for-block='<%= txtRFB.ClientID %>'
                             block-submit-button='<%= btnUpdate.ClientID %>'
                             unblock-submit-button='<%= btnSubmit.ClientID %>'
-                        </app-block-unblock-user>
+                        </block-unblock-user>
 
                     </div>
                     <div class="card my-2">

@@ -30,5 +30,5 @@
             width: 100%
         }
     </style> --%>
-    <app-dashboard-page></app-dashboard-page>
+    <dashboard-page></dashboard-page>
 </asp:Content>

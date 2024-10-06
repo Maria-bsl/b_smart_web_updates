@@ -10,7 +10,7 @@
     }
 
     .main-area .auth-box {
-      background: url(Images/nmb-dark.png);
+      <%-- background: url(Images/nmb-dark.png); --%>
       background-repeat: no-repeat;
       background-attachment: scroll;
       background-blend-mode: screen;
@@ -60,8 +60,10 @@
               <div class="main-area">
                 <div class="auth-box">
                   <div class="card card-auth">
-                    <div class="card-body">
-                      <div class="corp-logo">
+                    <div class="card-body relative">
+                      <div class="corp-logo d-flex justify-content-center">
+                        <%-- <img src="Images/logo.png" alt=""> --%>
+                        <img src="Images/nmb-light.png" alt="">
                         <img src="Images/logo.png" alt="">
                       </div>
                       <h5 class="card-title text-center text-normal mb-2"> B-Smart Academia</h5>
@@ -70,7 +72,7 @@
                         <div class="form-group col-12 mb-1">
                           <asp:Label CssClass="font-w500" ID="lblUName" runat="server">Username
                           </asp:Label>
-                          <asp:TextBox CssClass="form-control" runat="server" ID="txtEmail" />
+                          <asp:TextBox CssClass="form-control" runat="server" ID="txtEmail" TextMode="Email" />
                           <asp:RequiredFieldValidator ID="rfvUName" runat="server" ControlToValidate="txtEmail"
                             CssClass="red_new" Display="Dynamic" ErrorMessage="The username field is required." />
                         </div>
@@ -94,13 +96,13 @@
                         </div>
                       </div>
                       <div class="py-2">
-                          <app-login-page 
+                          <login-page 
                           admission-link-client-id='<%= HyperLink1.ClientID %>' 
                           forgot-password-client-id='<%= ForgotPassword.ClientID %>' 
                           password-input-client-id='<%= txtPwd.ClientID %>' 
                           username-input-client-id='<%= txtEmail.ClientID %>' 
                           login-button-client-id='<%= btnLogin.ClientID %>'>
-                          </app-login-page>
+                          </login-page>
                       </div>
                       <hr>
 

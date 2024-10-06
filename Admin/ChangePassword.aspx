@@ -84,7 +84,14 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <app-change-password-page change-password-button-client-id='<%= btnReg.ClientID %>' confirm-password-client-id='<%= txtConfirm.ClientID %>' new-password-client-id='<%= txtPass.ClientID %>' current-password-client-id='<%= txtCurrent.ClientID %>' password-expired-label='<%= lblExpired.ClientID %>' password-modify-label='<%= Label1.ClientID %>'></app-change-password-page>
+                        <change-password-page 
+                            change-password-button-client-id='<%= btnReg.ClientID %>' 
+                            confirm-password-client-id='<%= txtConfirm.ClientID %>' 
+                            new-password-client-id='<%= txtPass.ClientID %>' 
+                            current-password-client-id='<%= txtCurrent.ClientID %>' 
+                            password-expired-label='<%= lblExpired.ClientID %>' 
+                            password-modify-label='<%= Label1.ClientID %>'>
+                        </change-password-page>
                     </div>
                 </div>
 

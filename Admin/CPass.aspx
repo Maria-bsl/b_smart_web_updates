@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="card position-relative">
-                    <app-c-pass 
+                    <c-pass 
                         secret-question-dropdown-client-id='<%= ddlSecret.ClientID %>'
                         answer-client-id='<%= txtAns.ClientID %>'
                         new-password-client-id='<%= txtPass.ClientID %>'
@@ -116,7 +116,7 @@
                         capcha-button-client-id='<%= imgCaptcha1.ClientID %>'
                         cpass-submit-button='<%= btnReg.ClientID %>'
                     >
-                    </app-c-pass>
+                    </c-pass>
                 </div>
 
             </ContentTemplate>

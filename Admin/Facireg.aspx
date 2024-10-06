@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Facireg.aspx.cs" MasterPageFile="~/Head_Admin.Master" Inherits="PresentationLayer.Admin.Facireg" %>
+﻿<%@ Page MaintainScrollPositionOnPostback="true" Language="C#" AutoEventWireup="true" CodeBehind="Facireg.aspx.cs" MasterPageFile="~/Head_Admin.Master" Inherits="PresentationLayer.Admin.Facireg" %>
 <%@ MasterType VirtualPath="~/Head_Admin.master" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="Newtonsoft.Json" %>
@@ -39,7 +39,7 @@
                     </ol>
                 </nav>
                 <div class="card">
-                    <div class="card-body d-none">
+                    <div class="card-body">
                         <h5 class="card-title">Registration</h5>
 
                         <div class="row">
@@ -131,9 +131,16 @@
                             <div class="form-group col-sm-11 col-md-9 col-lg-6 row mx-0 format-160">
                                 <asp:Label Cssclass="col-md-3 col-form-label pl-0" runat="server" ID="lblDesig">Region
                                 </asp:Label>
-                                <asp:DropDownList CssClass="form-control" runat="server" ID="ddlRegion"
+                                <asp:DropDownList ViewStateMode="Enabled" EnableViewState="true" CssClass="form-control" runat="server" ID="ddlRegion"
                                     AutoPostBack="true" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged">
                                 </asp:DropDownList>
+                                <%-- <asp:UpdatePanel ID="ddlUpdatePanel" UpdateMode="Conditional" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddlRegion"
+                                            AutoPostBack="true" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel> --%>
                             </div>
 
                             <div class="form-group col-sm-11 col-md-9 col-lg-6 row mx-0 format-160">
@@ -274,28 +281,37 @@
                         %>
 
 
+                        <register-school-form
+                            school-name-client-id=<%= txtFaci.ClientID %>
+                            school-acronym-client-id=<%= txtShort.ClientID %>
+                            school-reg-no-client-id=<%= txtRegNo.ClientID %>
+                            institution-client-id=<%= txtIns.ClientID %>
+                            authorized-user-client-id=<%= txtName.ClientID %>
+                            branch-name-select-client-id=<%= ddlBranch.ClientID %>
+                            email-address-client-id='<%= txtEmail.ClientID %>'
+                            country-select-client-id='<%= ddlCountry.ClientID %>'
+                            region-select-client-id='<%= ddlRegion.ClientID %>'
+                            district-select-client-id=<%= ddlDistrict.ClientID %>
+                            ward-select-client-id='<%= ddlWard.ClientID %>'
+                            address-client-id='<%= txtAdd.ClientID %>'
+                            website-client-id='<%= txtWeb.ClientID %>'
+                            phone-number-client-id='<%= txtPhone.ClientID %>'
+                            mobile-number-client-id='<%= txtWork.ClientID %>'
+                            account-details-array='<%= JsonConvert.SerializeObject(items) %>'
+                            add-new-row-button-client-id='<%= ButtonAdd.ClientID %>'
+                            register-button-client-id='<%= btnReg.ClientID %>'
+                            cancel-button-client-id='<%= btnCancel.ClientID %>'>
+                        </register-school-form>
 
-                        <app-register-school-form
-                        school-name-client-id=<%= txtFaci.ClientID %>
-                        school-acronym-client-id=<%= txtShort.ClientID %>
-                        school-reg-no-client-id=<%= txtRegNo.ClientID %>
-                        institution-client-id=<%= txtIns.ClientID %>
-                        authorized-user-client-id=<%= txtName.ClientID %>
-                        branch-name-select-client-id=<%= ddlBranch.ClientID %>
-                        email-address-client-id='<%= txtEmail.ClientID %>'
-                        country-select-client-id='<%= ddlCountry.ClientID %>'
-                        region-select-client-id='<%= ddlRegion.ClientID %>'
-                        district-select-client-id=<%= ddlDistrict.ClientID %>
-                        ward-select-client-id='<%= ddlWard.ClientID %>'
-                        address-client-id='<%= txtAdd.ClientID %>'
-                        website-client-id='<%= txtWeb.ClientID %>'
-                        phone-number-client-id='<%= txtPhone.ClientID %>'
-                        mobile-number-client-id='<%= txtWork.ClientID %>'
-                        account-details-array='<%= JsonConvert.SerializeObject(items) %>'
-                        add-new-row-button-client-id='<%= ButtonAdd.ClientID %>'
-                        register-button-client-id='<%= btnReg.ClientID %>'
-                        cancel-button-client-id='<%= btnCancel.ClientID %>'>
-                        </app-register-school-form>
+                        <script>
+                            const el = document.querySelector('register-school-form');
+                            console.log(el);
+                            el.addEventListener('regionNotify',(e) => {
+                                console.log(123)
+                                //__doPostBack('<%= ddlRegion.UniqueID %>', '');
+                            });
+                        </script>
+
                     </div>
                 </div>
             </ContentTemplate>

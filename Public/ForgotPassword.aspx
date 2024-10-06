@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" MasterPageFile="~/Head_Public.Master" Inherits="PresentationLayer.Permit.ForgotPassword" %>
+﻿<%@ Page MaintainScrollPositionOnPostback="true" Language="C#" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" MasterPageFile="~/Head_Public.Master" Inherits="PresentationLayer.Permit.ForgotPassword" %>
 <%@ MasterType VirtualPath="~/Head_Public.master" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
@@ -12,17 +12,47 @@
                 </nav> -->
                 <div class="card card-650">
                     <div class="card-body">
-                        <div class="title-head">
-                            <div class="corp-logo flexible">
-                                <img src="../Images/logo.png" alt="">
+                        <%-- <div class="title-head d-flex justify-content-between w-100">
+                            <div class="d-flex">
+                                <img style="width: 170px; height: 80px" src="../Images/nmb-light.png" alt="">
+                                <img style="width: 170px; height: 80px" src="../Images/logo.png" alt="">
                             </div>
-
                             <h5 class="card-title text-normal mb-2">Forgot your Password?
-                                <span class="d-block card-title-span font-weight-normal">Use the form below to recover it.</span></h5>
+                            <span class="d-block card-title-span font-weight-normal">Use the form below to recover it.</span></h5>
+                        </div> --%>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <ul class="d-flex">
+                                <li>
+                                    <img style="width: 170px; height: 80px" src="../Images/nmb-light.png" alt="">
+                                </li>
+                                <li>
+                                    <img style="width: 170px; height: 80px" src="../Images/logo.png" alt="">
+                                </li>
+                            </ul>
+                            <div>
+                                <h1 class="font-weight-bold">
+                                    Forgot your Password?
+                                </h1>
+                                <p>
+                                    Use the form below to recover it.
+                                </p>
+                            </div>
                         </div>
                         <hr class="mt-2">
+                        
+                        <forgot-password-form
+                            username-client-id='<%= txtEmail.ClientID %>'
+                            question-client-id='<%= ddlSecret.ClientID %>'
+                            answer-client-id='<%= txtAns.ClientID %>'
+                            capcha-text-client-id='<%= txtCaptcha.ClientID %>'
+                            capcha-image-client-id='<%= imgCaptcha.ClientID %>'
+                            capcha-button-client-id='<%= imgCaptcha1.ClientID %>'
+                            back-to-login-link-client-id='<%= ForgotPassword.ClientID %>'
+                            submit-form-button-client-id='<%= btnReg.ClientID %>'
+                            invalid-capcha-client-id='<%= cvCaptcha.ClientID %>'>
+                        </forgot-password-form>
 
-                        <div class="row">
+                        <div class="row d-none">
                             <div class="form-group col-sm-12 col-md-11 row mx-0 format-210">
                                 <label class="col-sm-3 col-form-label pl-0">Email Address/User Name<span
                                         class="red_new">*</span></label>
@@ -72,9 +102,16 @@
                             <div class="col-12"></div>
                             <div class="form-group col d-flex fix-210">
                                 <asp:Image CssClass="fix-captcha" ID="imgCaptcha" runat="server" />
-                                <asp:ImageButton CssClass="input-group-text fix-btn ml-1" runat="server"
+                                <%-- <asp:ImageButton CssClass="input-group-text fix-btn ml-1" runat="server"
                                     ImageUrl="~/images/refresh.png" CausesValidation="false" ID="imgCaptcha1"
-                                    OnClick="imgCaptcha1_Click" />
+                                    OnClick="imgCaptcha1_Click" /> --%>
+                                    <asp:UpdatePanel>
+                                        <asp:ContentTemplate>
+                                            <asp:ImageButton CssClass="input-group-text fix-btn ml-1" runat="server"
+                                                ImageUrl="~/images/refresh.png" CausesValidation="false" ID="imgCaptcha1"
+                                                OnClick="imgCaptcha1_Click" />
+                                        <asp:ContentTemplate>
+                                    </asp:UpdatePanel>
                             </div>
                             <div class="col-12"></div>
                             <div class="form-group col-12 d-flex justify-content-between mb-0">
@@ -89,11 +126,19 @@
                         </div>
                     </div>
 
-                    <app-forgot-password-form
-                    username-client-id='<%= txtEmail.ClientID %>'
-                    secret-question-select-client-id='<%= ddlSecret.ClientID %>'
-                    answer-client-id='<%= txtAns.ClientID %>'
-                    ></app-forgot-password-form>
+                    <%-- <div class="card-body">
+                        <app-forgot-password-form
+                            username-client-id='<%= txtEmail.ClientID %>'
+                            question-client-id='<%= ddlSecret.ClientID %>'
+                            answer-client-id='<%= txtAns.ClientID %>'
+                            capcha-text-client-id='<%= txtCaptcha.ClientID %>'
+                            capcha-image-client-id='<%= imgCaptcha.ClientID %>'
+                            capcha-button-client-id='<%= imgCaptcha1.ClientID %>'
+                            back-to-login-link-client-id='<%= ForgotPassword.ClientID %>'
+                            submit-form-button-client-id='<%= btnReg.ClientID %>'
+                            invalid-capcha-client-id='<%= cvCaptcha.ClientID %>'>
+                        </app-forgot-password-form>
+                    </div> --%>
 
 
                 </div>
